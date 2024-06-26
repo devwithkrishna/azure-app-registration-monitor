@@ -1,0 +1,20 @@
+<html>
+<head>
+    <title>Azure App credential expiry alert for {{ app_name }}</title>
+</head>
+<body>
+    <p>Here are the details of app - {{ app_name }}
+        <li>Azure App registation name: {{ app_name }}</li>
+        <li>Azure App ID: {{ app_id }}</li>
+        <li>Azure App secret id : {{ secret_id }}</li>
+        <li>Azure App credential type : Client Secret</li>
+        <li>Azure App created on : {{ created_date }}</li>
+        <li>Azure App expiry date : {{ expiry_date }}</li>
+
+    </p>
+
+<p><strong>Please reach out to {{ manager }} 📧<a href="mailto:{{ manager_mail }}">{{ manager_mail }}</a> for any questions ✅</strong></p>
+<p><strong>⛔ This is a auto generated email. Generated on : {{ date }} IST. Please do not reply ⛔</strong></p>
+
+</body>
+</html>
