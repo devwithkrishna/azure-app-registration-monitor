@@ -5,9 +5,6 @@ import os
 from dotenv import load_dotenv
 
 
-# Optional logging
-# logging.basicConfig(level=logging.DEBUG)
-
 def msal_credential_token(client_id:str,authority:str, scope:list[str],client_credential:str):
     """
     {

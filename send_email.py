@@ -21,9 +21,9 @@ def send_email_with_sendgrid(applications_list_final_with_expiry_dates: list[dic
     :return:
     """
     for application in applications_list_final_with_expiry_dates:
+        # Variables for template
         email_ids = application["owner_email_ids"]
         print(f'Owners of {application["app_display_name"]} are {email_ids}')
-        # Variables for template
         manager = "Krishnadhas N K"
         manager_mail = "krishnadhas@devwithkrishna.in"
         app_name = application["app_display_name"]
@@ -32,9 +32,6 @@ def send_email_with_sendgrid(applications_list_final_with_expiry_dates: list[dic
         created_date = application["created_date_time"]
         expiry_date = application["app_expiry_datetime"]
         app_id = application["app_id"]
-        # repo_name = "github-automation-to-fetch-remaining-github-runner-time"
-        # org_name = 'devwithkrishna'
-        # username = 'githubofkrishnadhas'
         date = formatted_datetime()
         # send the alert if the expiry date is close to 30 days else ignore till next run
         if expiry_status == "No immediate action needed":
@@ -49,14 +46,10 @@ def send_email_with_sendgrid(applications_list_final_with_expiry_dates: list[dic
                                        manager_mail=manager_mail,app_id=app_id,manager=manager, created_date=created_date, expiry_date=expiry_date)
         message = Mail(
             from_email='krishnadhas@devwithkrishna.in',
-            to_emails='krishnadhasnk1997@gmail.com',
-            # to_emails=email_ids,
+            to_emails=email_ids,
             subject=f'Azure App credential expiry alert for {app_name} - {expiry_status}',
             html_content= Content("text/html", html_content)
         )
-        # if attachments:
-        #     for attachment in attachments:
-        #         message.add_attachment(attachment)
 
         try:
             load_dotenv()
@@ -64,7 +57,5 @@ def send_email_with_sendgrid(applications_list_final_with_expiry_dates: list[dic
             response = sendgrid_client.send(message)
             print(f'Status code: {response.status_code}')
             print(f'Communication was send to {email_ids} for {app_name} at {date}')
-            # print(response.body)
-            # print(response.headers)
         except Exception as e:
             print(e)

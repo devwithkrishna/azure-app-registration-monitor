@@ -4,64 +4,7 @@ from dotenv import load_dotenv
 from confidential_client_secret import msal_credential_token
 from date_time import date_time,compare_dates
 from send_email import send_email_with_sendgrid
-#
-# async def list_azure_app_registrations(credential, scopes):
-#     """
-#     list all azure applications
-#     :return:
-#     ref: https://learn.microsoft.com/en-us/graph/api/application-list?view=graph-rest-1.0&tabs=python#request
-#     """
-#     # load_dotenv()
-#     # Multi-tenant apps can use "common"
-#     # single-tenant apps must use the tenant ID from the Azure portal
-#     # tenant_id = os.getenv('AZURE_TENANT_ID')
-#     # client_id = os.getenv('AZURE_CLIENT_ID')
-#     # client_secret = os.getenv('AZURE_CLIENT_SECRET')
-#     # credential = ClientSecretCredential(tenant_id=tenant_id,client_id=client_id, client_secret=client_secret)
-#     # scopes = (os.getenv('SCOPE'))
-#     graph_client = GraphServiceClient(credentials = credential, scopes=scopes)
-#     result = await graph_client.applications.get()
-#
-#     applications = result.value
-#     applications_list = []
-#     for item in applications:
-#         application_dict = {}
-#         print(item)
-#         application_dict['app_id'] = item.app_id
-#         created_date_time = item.created_date_time
-#         application_dict['created_date_time'] = convert_to_ist(created_date_time)
-#         application_dict['description'] = item.description
-#         application_dict['object_id'] = item.id
-#         application_dict['app_display_name'] = item.display_name
-#         app_expiry_datetime = item.password_credentials[0].end_date_time
-#         application_dict['app_expiry_datetime'] = convert_to_ist(app_expiry_datetime)
-#         application_dict['secret_id'] = item.password_credentials[0].key_id
-#         applications_list.append(application_dict)
-#
-#     return applications_list
-#
-#
-# async def get_owner_of_app_registration(applications_list: list[dict], credential, scopes):
-#     """
-#     returns the owner of app registration
-#     :param applications_list:
-#     :return:
-#     ref: https://learn.microsoft.com/en-us/graph/api/application-list-owners?view=graph-rest-1.0&tabs=python#request
-#     """
-#     for application in applications_list:
-#         # scopes = os.getenv('SCOPE')
-#         graph_client = GraphServiceClient(credentials=credential, scopes=scopes)
-#         application_id = application['app_id']
-#         # owner_object_id = application['owner_object_id']
-#         try:
-#             result = await graph_client.applications.by_application_id(application_id).owners.get()
-#             print(result)
-#         except Exception as e:
-#             print(f"Failed to get owners for application {application_id}: {e}")
-#         # Accessing and printing owner information
-#         # for owner in result:
-#         #     print(owner)
-#
+
 
 def graph_api_http(access_token: str):
     """
