@@ -18,10 +18,12 @@ This project automates the monitoring of Azure app registrations, identifying th
 | :heavycehckmark: | 0-14           | Critical |
 | :heavycehckmark: | 14-30          | Needs attentions |
 |                  | 30 or more | No Immediate action is required |
+|  | -- | if secrets are not created - NA |
 
 * This code will send email to owners of the service principal to the owners except if expiry date is more than 30 days.
 ![alt text](email_sample.jpeg)
 
+* This will generate a report and send it to admin as well.
 
 # SendGrid 
 
@@ -54,6 +56,8 @@ SENDGRID_API_KEY ="xxx"
 * app_registrations.py ➡️ queries azure entra id to get details
 * confidential_client_secret.py ➡️ This creates the access token for Graph Api
 * send_email.py ➡️ sends a email to owner of app registration
+* send_email_report.py ➡️ sends a report email to admin email
 * date_time.py ➡️ this does some date time calculations required
 * email_template.html ➡️ email html template
+* email_report_template.html ➡️ email report html template
 
