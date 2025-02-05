@@ -3,7 +3,7 @@ from date_time import date_time
 from sendgrid.helpers.mail import Mail,Content
 from sendgrid import SendGridAPIClient
 from dotenv import load_dotenv
-from jinja2 import Environment,FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 # def formatted_datetime():
 #     # Get current date and time
@@ -39,7 +39,7 @@ def send_email_with_sendgrid(applications_list_final_with_expiry_dates: list[dic
             continue
         # Load the template file
         file_loader = FileSystemLoader('.')
-        env = Environment(loader=file_loader)
+        env = Environment(loader=file_loader, autoescape=select_autoescape(['html', 'xml']))
         template = env.get_template('email_template.html')
 
         # Render the template with dynamic data
