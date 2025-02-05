@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 python-dotenv = "^1.0.1"
-pytz = "^2024.1"
+pytz = "^2025.1"
 msal = "^1.29.0"
 requests = "^2.32.3"
 python-dateutil = "^2.9.0.post0"
